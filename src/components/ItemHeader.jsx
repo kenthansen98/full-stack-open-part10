@@ -22,14 +22,10 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         padding: 4,
     },
-    descriptionFlex: {
-        flexDirection: 'column',
+    contentFlex: {
         justifyContent: 'space-around',
-    },
-    description: {
-        flexWrap: 'wrap',
-        width: 320,
-    },  
+        flexShrink: 1,
+    }, 
 });
 
 const ItemHeader = ({ url, fullName, description, language }) => {
@@ -39,11 +35,11 @@ const ItemHeader = ({ url, fullName, description, language }) => {
                 style={styles.image}
                 source={{uri: url}}
             />
-            <View style={styles.descriptionFlex}>
+            <View style={styles.contentFlex}>
                 <Text fontWeight='bold' fontSize='subheading'>
                     {fullName}
                 </Text>
-                <Text color='textSecondary' fontSize='subheading' style={styles.description}>
+                <Text color='textSecondary' fontSize='subheading'>
                     {description}
                 </Text>
                 <View style={styles.language}>

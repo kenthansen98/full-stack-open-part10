@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     },
 });
 
-const AppBarTab = ({ title, route }) => {
+const AppBarTab = ({ onPress, title, route }) => {
     return (
-        <Link to={route} component={TouchableWithoutFeedback}>
+        <Link to={route} onPress={onPress} component={TouchableWithoutFeedback}>
                 <Text color='tab' fontWeight='bold' style={styles.tab}>{title}</Text>
         </Link>
     );
