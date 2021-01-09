@@ -5,6 +5,9 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
+import Repository from './Repository';
+import CreateReview from './CreateReview';
+import SignUp from './SignUp';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -25,6 +28,15 @@ const Main = () => {
                 </Route>
                 <Route path="/signin">
                     <SignIn />
+                </Route>
+                <Route path="/repository/:id" exact>
+                    <Repository />
+                </Route>
+                <Route path="/createreview">
+                    <CreateReview />
+                </Route>
+                <Route path="/signup">
+                    <SignUp />
                 </Route>
                 <Redirect to="/" />
             </Switch>

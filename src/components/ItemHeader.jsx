@@ -36,14 +36,14 @@ const ItemHeader = ({ url, fullName, description, language }) => {
                 source={{uri: url}}
             />
             <View style={styles.contentFlex}>
-                <Text fontWeight='bold' fontSize='subheading'>
+                <Text fontWeight='bold' fontSize='subheading' testID='fullName'>
                     {fullName}
                 </Text>
-                <Text color='textSecondary' fontSize='subheading'>
+                <Text color='textSecondary' fontSize='subheading' testID='description'>
                     {description}
                 </Text>
                 <View style={styles.language}>
-                    <Text color='tab' fontSize='subheading'>
+                    <Text color='tab' fontSize='subheading' testID='language'>
                         {language}
                     </Text>
                 </View>

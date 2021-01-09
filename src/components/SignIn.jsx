@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-native';
 
 import FormikTextInput from './FormikTextInput';
-import Text from './Text';
 import theme from '../theme';   
 import useSignIn from '../hooks/useSignIn';
+import Button from './Button';
 
 const styles = StyleSheet.create({
     container: {
@@ -25,15 +25,6 @@ const styles = StyleSheet.create({
         padding: 15,
         marginBottom: 10,
     },
-    button: {
-        backgroundColor: theme.colors.primary,
-        borderRadius: 5,
-        width: 350,
-        padding: 15,
-    },
-    buttonText: {
-        alignSelf: 'center',
-    }
 });
 
 const initialValues = {
@@ -44,13 +35,9 @@ const initialValues = {
 const SignInForm = ({ onSubmit }) => {
     return(
         <View style={styles.container}>
-            <FormikTextInput name="username" placeholder="Username" style={styles.field}/>
-            <FormikTextInput name="password" placeholder="Password" secureTextEntry style={styles.field} />
-            <TouchableWithoutFeedback onPress={onSubmit}>
-                <View style={styles.button}>
-                    <Text color='tab' style={styles.buttonText}>Submit</Text>
-                </View>
-            </TouchableWithoutFeedback>
+            <FormikTextInput name="username" placeholder="Username" style={styles.field} testID="unameField" />
+            <FormikTextInput name="password" placeholder="Password" secureTextEntry style={styles.field} testID="pwrdField" />
+            <Button text="Submit" onSubmit={onSubmit} />
         </View>
     );
 };
@@ -63,6 +50,18 @@ const validationSchema = yup.object().shape({
         .string()
         .required('Password is required'),
 });
+
+export const SignInContainer = ({ onSubmit }) => {
+    return (
+        <Formik 
+            initialValues={initialValues} 
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+        >
+            {({handleSubmit}) => <SignInForm onSubmit={handleSubmit} />}
+        </Formik>
+    );
+};
 
 const SignIn = () => {
     const [signIn] = useSignIn();
@@ -80,15 +79,7 @@ const SignIn = () => {
         }
     };
 
-    return (
-        <Formik 
-            initialValues={initialValues} 
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-        >
-            {({handleSubmit}) => <SignInForm onSubmit={handleSubmit} />}
-        </Formik>
-    );
+    return <SignInContainer onSubmit={onSubmit} />;
 };
 
 export default SignIn;

@@ -22,19 +22,19 @@ const ItemStats = ({ stars, forks, reviews, ratings }) => {
     return(
         <View style={styles.flexContainer}>
             <View>
-                <Text fontWeight='bold' style={styles.flexItem}>{convertNum(stars)}</Text>
+                <Text fontWeight='bold' style={styles.flexItem} testID='stars'>{convertNum(stars)}</Text>
                 <Text color='textSecondary'>Stars</Text>
             </View>
             <View>
-                <Text fontWeight='bold' style={styles.flexItem}>{convertNum(forks)}</Text>
+                <Text fontWeight='bold' style={styles.flexItem} testID='forks'>{convertNum(forks)}</Text>
                 <Text color='textSecondary'>Forks</Text>
             </View>
             <View>
-                <Text fontWeight='bold' style={styles.flexItem}>{reviews}</Text>
+                <Text fontWeight='bold' style={styles.flexItem} testID='reviews'>{reviews}</Text>
                 <Text color='textSecondary'>Reviews</Text>
             </View>
             <View>
-                <Text fontWeight='bold' style={styles.flexItem}>{ratings}</Text>
+                <Text fontWeight='bold' style={styles.flexItem} testID='rating'>{ratings}</Text>
                 <Text color='textSecondary'>Rating</Text>
             </View>
         </View>
